@@ -125,7 +125,7 @@ class TransaksiController extends BaseController
             return redirect()->to(base_url('riwayat'))->with('success', 'Berhasil disimpan!');
         }
 
-        return redirect()->to(base_url('transaksi'));
+        return redirect()->to(base_url('peminjaman'));
     }
 
     // ╔══════════════════════════════════════════════════════════╗
@@ -141,6 +141,10 @@ class TransaksiController extends BaseController
      */
     public function kembalikan($id)
     {
+        if (session()->get('role') !== 'admin') {
+            return redirect()->to(base_url('riwayat'))->with('error', 'Akses ditolak! Hanya admin yang dapat memproses pengembalian.');
+        }
+
         // Cari data transaksi
         $transaksi = $this->transaksiModel->find($id);
 

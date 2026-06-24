@@ -58,11 +58,15 @@
                     </td>
                     <td class="text-center">
                         <?php if($r['status'] == 'Dipinjam'): ?>
-                            <a href="<?= base_url('transaksi/kembalikan/' . $r['id']) ?>" 
-                               class="btn btn-sm btn-success rounded-pill px-4 shadow-sm fw-bold"
-                               onclick="return confirm('Konfirmasi: Apakah alat laboratorium ini sudah diterima kembali dalam kondisi baik?')">
-                                <i class="fas fa-undo-alt me-1"></i> Kembalikan
-                            </a>
+                            <?php if(session()->get('role') == 'admin'): ?>
+                                <a href="<?= base_url('transaksi/kembalikan/' . $r['id']) ?>" 
+                                   class="btn btn-sm btn-success rounded-pill px-4 shadow-sm fw-bold"
+                                   onclick="return confirm('Konfirmasi: Apakah alat laboratorium ini sudah diterima kembali dalam kondisi baik?')">
+                                    <i class="fas fa-undo-alt me-1"></i> Kembalikan
+                                </a>
+                            <?php else: ?>
+                                <span class="text-muted small italic">Belum Kembali <i class="fas fa-clock text-warning"></i></span>
+                            <?php endif; ?>
                         <?php else: ?>
                             <span class="text-muted small italic">Selesai <i class="fas fa-check text-success"></i></span>
                         <?php endif; ?>

@@ -74,7 +74,7 @@
                 <button type="submit" class="btn btn-success px-5 rounded-pill shadow-sm">
                     <i class="fas fa-save me-2"></i>Proses Peminjaman
                 </button>
-                <a href="<?= base_url('transaksi') ?>" class="btn btn-outline-secondary rounded-pill px-4">
+                <a href="<?= base_url('peminjaman') ?>" class="btn btn-outline-secondary rounded-pill px-4">
                     Batal
                 </a>
             </div>
