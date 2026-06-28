@@ -194,6 +194,13 @@ class Database extends Config
     {
         parent::__construct();
 
+        if (getenv('IS_DOCKER') === 'true') {
+            $this->default['hostname'] = 'db';
+            $this->default['username'] = 'root';
+            $this->default['password'] = '';
+            $this->default['database'] = 'weblaboratorium';
+        }
+
         // Ensure that we always set the database group to 'tests' if
         // we are currently running an automated test suite, so that
         // we don't overwrite live data on accident.

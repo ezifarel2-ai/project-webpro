@@ -124,4 +124,13 @@ class Session extends BaseConfig
      * seconds.
      */
     public int $lockMaxRetries = 300;
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        if (getenv('IS_DOCKER') === 'true') {
+            $this->savePath = '/tmp';
+        }
+    }
 }

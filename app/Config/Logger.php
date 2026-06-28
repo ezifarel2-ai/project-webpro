@@ -148,4 +148,13 @@ class Logger extends BaseConfig
         //     'messageType' => 0,
         // ],
     ];
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        if (getenv('IS_DOCKER') === 'true') {
+            $this->handlers['CodeIgniter\Log\Handlers\FileHandler']['path'] = '/tmp/';
+        }
+    }
 }
